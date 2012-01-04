@@ -35,14 +35,14 @@ public class FailedLogin extends JavaPlugin {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvent(Event.Type.PLAYER_LOGIN, loginListener, Event.Priority.Normal, this);
 
-        logger.info("Version " + getDescription().getVersion() + " enable.");
+        logger.info("Version " + getDescription().getVersion() + " enable");
     }
 
     /**
      * Method execute when the plugin is disable.
      */
     public void onDisable() {
-        logger.info("Version " + getDescription().getVersion() + " disable.");
+        logger.info("Version " + getDescription().getVersion() + " disable");
     }
 
     /**
