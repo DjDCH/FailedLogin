@@ -1,0 +1,9 @@
+FailedLogin - Version 0.1
+----------------------------
+    * First release
+    * Build with Bukkit #1073
+    * Tested with CraftBukkit #1597
+    
+    Major features changes
+    -----------------------
+    * Add custom kick message when the login process fail
