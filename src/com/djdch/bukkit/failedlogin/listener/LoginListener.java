@@ -1,4 +1,4 @@
-package com.djdch.bukkit.failedlogin.listeners;
+package com.djdch.bukkit.failedlogin.listener;
 
 import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerLoginEvent;

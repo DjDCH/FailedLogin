@@ -4,8 +4,8 @@ import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.djdch.bukkit.failedlogin.listeners.LoginListener;
-import com.djdch.bukkit.utils.Logger;
+import com.djdch.bukkit.failedlogin.listener.LoginListener;
+import com.djdch.bukkit.util.Logger;
 
 /**
  * Main class of the <b>FailedLogin</b> plugin for Bukkit.
