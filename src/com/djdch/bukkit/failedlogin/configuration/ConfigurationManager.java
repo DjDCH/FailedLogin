@@ -63,7 +63,7 @@ public class ConfigurationManager {
     /**
      * Method who load the configuration from config file.
      * 
-     * @throws ConfigException Throw a ConfigException if an error occur while loading the configuration.
+     * @throws ConfigurationException Throw a ConfigurationException if an error occur while loading the configuration.
      */
     public void loadConfig() throws ConfigurationException {
         if (!this.plugin.getDataFolder().exists()) {
