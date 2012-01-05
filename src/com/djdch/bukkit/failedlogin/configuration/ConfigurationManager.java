@@ -117,12 +117,13 @@ public class ConfigurationManager {
                     }
                 }
 
-                values.put(data.getKey(), patate);
+                this.values.put(data.getKey(), patate);
             }
         } catch (Exception e) {
             this.logger.severe("Cannot load configuration file");
             throw new ConfigurationException();
         }
+
         this.logger.info("Configuration file loaded");
     }
 
