@@ -23,6 +23,11 @@ public class ConfigurationManager {
     private static final String CONFIG_FILE = "failedlogin.properties";
 
     /**
+     * Contains the max length for the message string.
+     */
+    private static final int MAX_MSG_LENGTH = 100;
+
+    /**
      * Contains the array who hold the defaults settings of the plugin.
      */
     protected HashMap<String, Object> defaults = new HashMap<String, Object>();
@@ -105,7 +110,11 @@ public class ConfigurationManager {
                     this.logger.warning("Cannot get property " + data.getKey() + ", using default");
                     patate = data.getValue();
                 } else {
-                    patate = value;
+                    if (value.length() > MAX_MSG_LENGTH) {
+                        patate = value.substring(0, MAX_MSG_LENGTH);
+                    } else {
+                        patate = value;
+                    }
                 }
 
                 values.put(data.getKey(), patate);
