@@ -65,10 +65,10 @@ public class ConfigurationManager {
             this.plugin.getDataFolder().mkdir();
 
             if (!this.plugin.getDataFolder().exists()) {
-                this.logger.severe("Cannot creating configuration directory.");
+                this.logger.severe("Cannot creating configuration directory");
                 throw new ConfigurationException();
             } else {
-                this.logger.info("Configuration directory created.");
+                this.logger.info("Configuration directory created");
             }
         }
 
@@ -85,10 +85,10 @@ public class ConfigurationManager {
                 fw.close();
 
             } catch (Exception e) {
-                this.logger.severe("Cannot create configuration file.");
+                this.logger.severe("Cannot create configuration file");
                 throw new ConfigurationException();
             }
-            this.logger.info("Configuration file created.");
+            this.logger.info("Configuration file created");
         }
 
         try {
@@ -102,7 +102,7 @@ public class ConfigurationManager {
                 Object patate;
 
                 if (value == null) {
-                    this.logger.warning("Cannot get property " + data.getKey() + ", using default.");
+                    this.logger.warning("Cannot get property " + data.getKey() + ", using default");
                     patate = data.getValue();
                 } else {
                     patate = value;
@@ -111,10 +111,10 @@ public class ConfigurationManager {
                 values.put(data.getKey(), patate);
             }
         } catch (Exception e) {
-            this.logger.severe("Cannot load configuration file.");
+            this.logger.severe("Cannot load configuration file");
             throw new ConfigurationException();
         }
-        this.logger.info("Configuration file loaded.");
+        this.logger.info("Configuration file loaded");
     }
 
     /**
@@ -127,7 +127,7 @@ public class ConfigurationManager {
         try {
             return this.values.get(key.toLowerCase());
         } catch (NullPointerException e) {
-            this.logger.severe("Cannot find default value for " + key + ".");
+            this.logger.severe("Cannot find value for " + key);
             this.plugin.getServer().getPluginManager().disablePlugin(this.plugin);
         }
 
