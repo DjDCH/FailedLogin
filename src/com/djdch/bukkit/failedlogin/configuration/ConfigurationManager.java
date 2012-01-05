@@ -111,6 +111,7 @@ public class ConfigurationManager {
                     patate = data.getValue();
                 } else {
                     if (value.length() > MAX_MSG_LENGTH) {
+                        this.logger.warning("Message " + data.getKey() + " is too long, cutting the excess");
                         patate = value.substring(0, MAX_MSG_LENGTH);
                     } else {
                         patate = value;
