@@ -5,6 +5,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 
 import com.djdch.bukkit.failedlogin.FailedLogin;
+import com.djdch.bukkit.failedlogin.configuration.ConfigurationManager;
 
 /**
  * Class who listen for any player who tries to login.
@@ -18,12 +19,18 @@ public class LoginListener extends PlayerListener {
     protected FailedLogin failedLogin;
 
     /**
+     * Contains the ConfigurationManager instance.
+     */
+    protected ConfigurationManager configurationManager;
+
+    /**
      * Constructor for the initialization of the LoginListener class.
      * 
      * @param failedLogin Contains the FailedLogin instance.
      */
     public LoginListener(FailedLogin failedLogin) {
         this.failedLogin = failedLogin;
+        this.configurationManager = failedLogin.getConfigurationManager();
     }
 
     /**
@@ -33,9 +40,9 @@ public class LoginListener extends PlayerListener {
      */
     public void onPlayerLogin(PlayerLoginEvent event) {
         if (event.getResult() == Result.KICK_BANNED) {
-            event.setKickMessage("You haven't paid for this month. Please proceed with the payment or contact the administrator.");
+            event.setKickMessage((String) this.configurationManager.getValue("KICK_BANNED_MSG"));
         } else if (event.getResult() == Result.KICK_WHITELIST) {
-            event.setKickMessage("You are not white-listed on this server. Please contact the administrator.");
+            event.setKickMessage((String) this.configurationManager.getValue("KICK_WHITELIST_MSG"));
         }
     }
 }

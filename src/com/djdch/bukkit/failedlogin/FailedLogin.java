@@ -4,6 +4,8 @@ import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.djdch.bukkit.failedlogin.configuration.ConfigurationException;
+import com.djdch.bukkit.failedlogin.configuration.ConfigurationManager;
 import com.djdch.bukkit.failedlogin.listener.LoginListener;
 import com.djdch.bukkit.util.Logger;
 
@@ -21,6 +23,11 @@ public class FailedLogin extends JavaPlugin {
     protected final Logger logger = new Logger();
 
     /**
+     * Contains the ConfigurationManager instance.
+     */
+    protected final ConfigurationManager configurationManager = new ConfigurationManager(this);
+
+    /**
      * Contains the loginListener instance.
      */
     protected final LoginListener loginListener = new LoginListener(this);
@@ -30,6 +37,14 @@ public class FailedLogin extends JavaPlugin {
      */
     public void onEnable() {
         this.logger.setName(getDescription().getName());
+
+        // Load the configuration
+        try {
+            this.configurationManager.loadConfig();
+        } catch (ConfigurationException e) {
+            setEnabled(false);
+            return;
+        }
 
         // Register the plugin events
         PluginManager pm = getServer().getPluginManager();
@@ -52,5 +67,14 @@ public class FailedLogin extends JavaPlugin {
      */
     public Logger getLogger() {
         return this.logger;
+    }
+
+    /**
+     * Accessor who return the configuration manager instance.
+     * 
+     * @return ConfigurationManager instance.
+     */
+    public ConfigurationManager getConfigurationManager() {
+        return this.configurationManager;
     }
 }
