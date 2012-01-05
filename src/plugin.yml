@@ -3,3 +3,4 @@ description: Return custom kick message when the login process fail.
 author: DjDCH
 main: com.djdch.bukkit.failedlogin.FailedLogin
 version: 0.1
+website: http://dev.bukkit.org/server-mods/failedlogin/
