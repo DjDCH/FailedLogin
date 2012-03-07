@@ -14,11 +14,6 @@ import com.djdch.bukkit.failedlogin.configuration.ConfigurationManager;
  */
 public class LoginListener extends PlayerListener {
     /**
-     * Contains the FailedLogin instance.
-     */
-    protected FailedLogin failedLogin;
-
-    /**
      * Contains the ConfigurationManager instance.
      */
     protected ConfigurationManager configurationManager;
@@ -29,7 +24,6 @@ public class LoginListener extends PlayerListener {
      * @param failedLogin Contains the FailedLogin instance.
      */
     public LoginListener(FailedLogin failedLogin) {
-        this.failedLogin = failedLogin;
         this.configurationManager = failedLogin.getConfigurationManager();
     }
 

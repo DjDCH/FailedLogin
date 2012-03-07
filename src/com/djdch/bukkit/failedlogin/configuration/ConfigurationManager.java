@@ -45,16 +45,16 @@ public class ConfigurationManager {
     /**
      * Contains the FailedLogin instance.
      */
-    protected FailedLogin plugin;
+    protected FailedLogin failedLogin;
 
     /**
      * Constructor for the initialization of the config manager.
      * 
-     * @param plugin Contains the FailedLogin instance.
+     * @param failedLogin Contains the FailedLogin instance.
      */
-    public ConfigurationManager(FailedLogin plugin) {
-        this.plugin = plugin;
-        this.logger = plugin.getLogger();
+    public ConfigurationManager(FailedLogin failedLogin) {
+        this.failedLogin = failedLogin;
+        this.logger = failedLogin.getLogger();
 
         this.defaults.put("kick_banned_msg", "You are banned from this server!");
         this.defaults.put("kick_whitelist_msg", "You are not white-listed on this server!");
@@ -66,10 +66,10 @@ public class ConfigurationManager {
      * @throws ConfigurationException Throw a ConfigurationException if an error occur while loading the configuration.
      */
     public void loadConfig() throws ConfigurationException {
-        if (!this.plugin.getDataFolder().exists()) {
-            this.plugin.getDataFolder().mkdir();
+        if (!this.failedLogin.getDataFolder().exists()) {
+            this.failedLogin.getDataFolder().mkdir();
 
-            if (!this.plugin.getDataFolder().exists()) {
+            if (!this.failedLogin.getDataFolder().exists()) {
                 this.logger.severe("Cannot creating configuration directory");
                 throw new ConfigurationException();
             } else {
@@ -77,7 +77,7 @@ public class ConfigurationManager {
             }
         }
 
-        File properties = new File(plugin.getDataFolder().getAbsolutePath() + File.separator + CONFIG_FILE);
+        File properties = new File(failedLogin.getDataFolder().getAbsolutePath() + File.separator + CONFIG_FILE);
 
         if (!properties.exists()) {
             try {
@@ -98,7 +98,7 @@ public class ConfigurationManager {
 
         try {
             Properties propConfig = new Properties();
-            BufferedInputStream stream = new BufferedInputStream(new FileInputStream(plugin.getDataFolder().getAbsolutePath() + File.separator + CONFIG_FILE));
+            BufferedInputStream stream = new BufferedInputStream(new FileInputStream(failedLogin.getDataFolder().getAbsolutePath() + File.separator + CONFIG_FILE));
             propConfig.load(stream);
 
             // Parse defaults properties
@@ -139,7 +139,7 @@ public class ConfigurationManager {
             return this.values.get(key.toLowerCase());
         } catch (NullPointerException e) {
             this.logger.severe("Cannot find value for " + key);
-            this.plugin.getServer().getPluginManager().disablePlugin(this.plugin);
+            this.failedLogin.getServer().getPluginManager().disablePlugin(this.failedLogin);
         }
 
         return null;
