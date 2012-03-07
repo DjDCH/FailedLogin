@@ -1,6 +1,8 @@
 package com.djdch.bukkit.failedlogin.listener;
 
-import org.bukkit.event.player.PlayerListener;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 
@@ -12,7 +14,7 @@ import com.djdch.bukkit.failedlogin.configuration.ConfigurationManager;
  * 
  * @author DjDCH
  */
-public class LoginListener extends PlayerListener {
+public class LoginListener implements Listener {
     /**
      * Contains the ConfigurationManager instance.
      */
@@ -32,6 +34,7 @@ public class LoginListener extends PlayerListener {
      * 
      * @param event Contains the PlayerLoginEvent instance.
      */
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerLogin(PlayerLoginEvent event) {
         if (event.getResult() == Result.KICK_BANNED) {
             event.setKickMessage((String) this.configurationManager.getValue("KICK_BANNED_MSG"));

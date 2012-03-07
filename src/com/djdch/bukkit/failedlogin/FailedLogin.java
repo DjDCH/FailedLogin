@@ -2,8 +2,6 @@ package com.djdch.bukkit.failedlogin;
 
 import java.util.logging.Logger;
 
-import org.bukkit.event.Event;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.djdch.bukkit.failedlogin.configuration.ConfigurationException;
@@ -49,9 +47,7 @@ public class FailedLogin extends JavaPlugin {
             return;
         }
 
-        // Register the plugin events
-        PluginManager pm = getServer().getPluginManager();
-        pm.registerEvent(Event.Type.PLAYER_LOGIN, loginListener, Event.Priority.Normal, this);
+        this.getServer().getPluginManager().registerEvents(this.loginListener, this);
     }
 
     /**
