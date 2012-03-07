@@ -7,9 +7,9 @@ import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
 
 import com.djdch.bukkit.failedlogin.FailedLogin;
-import com.djdch.bukkit.util.Logger;
 
 /**
  * Class who load and hold the configuration of this plugin.
@@ -54,7 +54,7 @@ public class ConfigurationManager {
      */
     public ConfigurationManager(FailedLogin failedLogin) {
         this.failedLogin = failedLogin;
-        this.logger = failedLogin.getLogger();
+        this.logger = failedLogin.getPluginLogger();
 
         this.defaults.put("kick_banned_msg", "You are banned from this server!");
         this.defaults.put("kick_whitelist_msg", "You are not white-listed on this server!");

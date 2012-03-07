@@ -1,5 +1,7 @@
 package com.djdch.bukkit.failedlogin;
 
+import java.util.logging.Logger;
+
 import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -7,7 +9,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.djdch.bukkit.failedlogin.configuration.ConfigurationException;
 import com.djdch.bukkit.failedlogin.configuration.ConfigurationManager;
 import com.djdch.bukkit.failedlogin.listener.LoginListener;
-import com.djdch.bukkit.util.Logger;
 
 /**
  * Main class of the <b>FailedLogin</b> plugin for Bukkit.
@@ -20,23 +21,25 @@ public class FailedLogin extends JavaPlugin {
     /**
      * Contains the Logger instance.
      */
-    protected final Logger logger = new Logger();
+    protected Logger logger;
 
     /**
      * Contains the ConfigurationManager instance.
      */
-    protected final ConfigurationManager configurationManager = new ConfigurationManager(this);
+    protected ConfigurationManager configurationManager;
 
     /**
      * Contains the loginListener instance.
      */
-    protected final LoginListener loginListener = new LoginListener(this);
+    protected LoginListener loginListener;
 
     /**
      * Method execute when the plugin is enable.
      */
     public void onEnable() {
-        this.logger.setName(getDescription().getName());
+        this.logger = this.getLogger();
+        this.configurationManager = new ConfigurationManager(this);
+        this.loginListener = new LoginListener(this);
 
         // Load the configuration
         try {
@@ -49,23 +52,20 @@ public class FailedLogin extends JavaPlugin {
         // Register the plugin events
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvent(Event.Type.PLAYER_LOGIN, loginListener, Event.Priority.Normal, this);
-
-        this.logger.info("Version " + getDescription().getVersion() + " enable");
     }
 
     /**
      * Method execute when the plugin is disable.
      */
     public void onDisable() {
-        this.logger.info("Version " + getDescription().getVersion() + " disable");
     }
 
     /**
-     * Accessor who return the logger instance.
+     * Accessor who return the plugin logger instance.
      * 
      * @return Logger instance.
      */
-    public Logger getLogger() {
+    public Logger getPluginLogger() {
         return this.logger;
     }
 
