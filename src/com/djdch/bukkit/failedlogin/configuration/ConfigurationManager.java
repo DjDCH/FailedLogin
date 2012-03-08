@@ -58,6 +58,8 @@ public class ConfigurationManager {
 
         this.defaults.put("kick_banned_msg", "You are banned from this server!");
         this.defaults.put("kick_whitelist_msg", "You are not white-listed on this server!");
+        this.defaults.put("kick_full_msg", "The server is full!");
+        this.defaults.put("kick_other_msg", "You cannot login on this server!");
     }
 
     /**
@@ -86,7 +88,7 @@ public class ConfigurationManager {
                 FileWriter fw = new FileWriter(properties);
 
                 // Default configuration file
-                fw.write("# Message definitions\nkick_banned_msg=You are banned from this server!\nkick_whitelist_msg=You are not white-listed on this server!\n");
+                fw.write("# Message definitions\nkick_banned_msg=You are banned from this server!\nkick_whitelist_msg=You are not white-listed on this server!\nkick_full_msg=The server is full!\nkick_other_msg=You cannot login on this server!\n");
                 fw.close();
 
             } catch (Exception e) {

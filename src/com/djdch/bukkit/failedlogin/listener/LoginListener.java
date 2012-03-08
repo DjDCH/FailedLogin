@@ -40,6 +40,10 @@ public class LoginListener implements Listener {
             event.setKickMessage((String) this.configurationManager.getValue("KICK_BANNED_MSG"));
         } else if (event.getResult() == Result.KICK_WHITELIST) {
             event.setKickMessage((String) this.configurationManager.getValue("KICK_WHITELIST_MSG"));
+        } else if (event.getResult() == Result.KICK_FULL) {
+            event.setKickMessage((String) this.configurationManager.getValue("KICK_FULL_MSG"));
+        } else if (event.getResult() == Result.KICK_OTHER) {
+            event.setKickMessage((String) this.configurationManager.getValue("KICK_OTHER_MSG"));
         }
     }
 }
