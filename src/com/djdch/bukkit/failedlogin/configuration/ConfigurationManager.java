@@ -56,10 +56,12 @@ public class ConfigurationManager {
         this.failedLogin = failedLogin;
         this.logger = failedLogin.getPluginLogger();
 
-        this.defaults.put("kick_banned_msg", "You are banned from this server!");
-        this.defaults.put("kick_whitelist_msg", "You are not white-listed on this server!");
-        this.defaults.put("kick_full_msg", "The server is full!");
-        this.defaults.put("kick_other_msg", "You cannot login on this server!");
+        this.defaults.put("login_banned_msg", "You are banned from this server!");
+        this.defaults.put("login_whitelist_msg", "You are not white-listed on this server!");
+        this.defaults.put("login_full_msg", "The server is full!");
+        this.defaults.put("login_other_msg", "You cannot login on this server!");
+        this.defaults.put("kick_kicked_msg", "Kicked by admin.");
+        this.defaults.put("kick_banned_msg", "Banned by admin.");
     }
 
     /**
@@ -88,7 +90,7 @@ public class ConfigurationManager {
                 FileWriter fw = new FileWriter(properties);
 
                 // Default configuration file
-                fw.write("# Message definitions\nkick_banned_msg=You are banned from this server!\nkick_whitelist_msg=You are not white-listed on this server!\nkick_full_msg=The server is full!\nkick_other_msg=You cannot login on this server!\n");
+                fw.write("# Message definitions\nlogin_banned_msg=You are banned from this server!\nlogin_whitelist_msg=You are not white-listed on this server!\nlogin_full_msg=The server is full!\nlogin_other_msg=You cannot login on this server!\nkick_kicked_msg=Kicked by admin.\nkick_banned_msg=Banned by admin.\n");
                 fw.close();
 
             } catch (Exception e) {
