@@ -1,3 +1,21 @@
+FailedLogin - Version 0.2
+----------------------------
+    * Build with Bukkit #1360
+    * Tested with CraftBukkit #1988
+    
+    Major features changes
+    -----------------------
+    * Renamed kick_banned_msg to login_banned_msg
+    * Renamed kick_whitelist_msg to login_whitelist_msg
+    * Added login_full_msg and login_other_msg
+    * Added kick_kicked_msg and kick_banned_msg
+    
+    Bug fixes/development issues
+    -----------------------------
+    * Fixed code for the Bukkit version 1.1-R6
+    * Switched to the new event system
+    * Switched to the native tagged logging
+
 FailedLogin - Version 0.1
 ----------------------------
     * First release
